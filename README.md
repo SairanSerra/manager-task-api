@@ -4,5 +4,7 @@
 #Passo a passo para rodar o projeto
 
 1 - Clone o projeto
+</br>
 2 - Após clonado, abra o terminal na pasta raíz do projeto
+</br>
 3-  Com o terminal aberto rode o comando `docker-compose up`
