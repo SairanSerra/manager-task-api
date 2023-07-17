@@ -10,7 +10,6 @@ services:
       - "3333:3333"
     volumes:
       - .:/app/manager-task-api
-      - node-modules-manager-task-api:/app/manager-task-api/node_modules
     networks:
       - mysql-network
 
@@ -18,7 +17,7 @@ services:
     container_name: mysql
     image: mysql:5.7
     ports:
-      - "3305:3306"
+      - "3306:3306"
     volumes:
       - mysql:/var/lib/mysql:rw
     restart: always
@@ -33,7 +32,5 @@ networks:
     driver: bridge
 
 volumes:
-  node-modules-manager-task-api:
-    name: node-modules-manager-task-api
   mysql:
     name: mysql

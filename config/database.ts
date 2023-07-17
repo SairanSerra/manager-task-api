@@ -45,11 +45,10 @@ const databaseConfig: DatabaseConfig = {
       migrations: {
         naturalSort: true,
       },
-      healthCheck: false,
+      healthCheck: true,
       debug: false,
     },
-
-  }
+  },
 }
 
 export default databaseConfig
