@@ -10,10 +10,8 @@ export default class extends BaseSchema {
       table.string('name').notNullable()
       table.string('type').notNullable()
       table.string('token', 64).notNullable().unique()
-      table.timestamp('expiresAt').defaultTo(this.now())
-      table.timestamp('createdAt').defaultTo(this.now())
-      table.timestamp('updatedAt').defaultTo(this.now())
-      table.timestamp('deletedAt').nullable()
+      table.timestamp('expires_at', { useTz: true }).nullable().defaultTo(this.now())
+      table.timestamp('created_at', { useTz: true }).notNullable().defaultTo(this.now())
     })
   }
 
