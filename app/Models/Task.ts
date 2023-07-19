@@ -12,6 +12,9 @@ export default class Task extends BaseModel {
   @column({ columnName: 'description' })
   public description: string
 
+  @column({ columnName: 'idUser', serializeAs: null })
+  public idUser: number
+
   @column({ columnName: 'status' })
   public status: 'PENDING' | 'INPROGRESS' | 'COMPLETED'
 

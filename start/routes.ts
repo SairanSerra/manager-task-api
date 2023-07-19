@@ -29,3 +29,9 @@ Route.get('/health', async ({ response }) => {
 Route.get('/', async (response) => {
   return response.response.redirect().toPath('/health')
 })
+
+Route.group(() => {
+  Route.post('/user/create', 'UsersController.create')
+  Route.post('/login', 'Authcontroller.login')
+  Route.group(() => {}).middleware('auth:api')
+}).prefix('v1')

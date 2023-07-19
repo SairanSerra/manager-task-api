@@ -6,6 +6,8 @@ export default class extends BaseSchema {
   public async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
+      table.integer('idUser').unsigned()
+      table.foreign('idUser').references('id').inTable('users').onDelete('cascade')
       table.string('name', 100)
       table.string('description')
       table.enum('status', ['PENDING', 'INPROGRESS', 'COMPLETED']).defaultTo('PENDING')

@@ -10,6 +10,7 @@ services:
       - "3333:3333"
     volumes:
       - .:/app/manager-task-api
+      - node-modules-manager-task-api:/app/manager-task-api/node_modules
     networks:
       - mysql-network
 
@@ -32,5 +33,7 @@ networks:
     driver: bridge
 
 volumes:
+  node-modules-manager-task-api:
+    name: node-modules-manager-task-api
   mysql:
     name: mysql
