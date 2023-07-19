@@ -33,5 +33,12 @@ Route.get('/', async (response) => {
 Route.group(() => {
   Route.post('/user/create', 'UsersController.create')
   Route.post('/login', 'Authcontroller.login')
-  Route.group(() => {}).middleware('auth:api')
+
+  Route.group(() => {
+    Route.get('/task', 'TasksController.index')
+    Route.post('/task', 'TasksController.store')
+    Route.put('/task', 'TasksController.update')
+    Route.delete('/task', 'TasksController.delete')
+    Route.post('/loggout', 'Authcontroller.loggout')
+  }).middleware('auth:api')
 }).prefix('v1')

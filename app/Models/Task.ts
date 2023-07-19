@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, beforeFetch, beforeFind } from '@ioc:Adonis/Lucid/Orm'
+import { BaseModel, column, beforeFetch, beforeFind, beforeDelete } from '@ioc:Adonis/Lucid/Orm'
 import { softDelete, softDeleteQuery } from 'App/Services/SoftDelete'
 
 export default class Task extends BaseModel {
@@ -47,6 +47,9 @@ export default class Task extends BaseModel {
 
   @beforeFetch()
   public static softDeletesFetch = softDeleteQuery
+
+  @beforeDelete()
+  public static softDelete = softDelete
 
   public async softDelete(column?: string) {
     await softDelete(this, column)

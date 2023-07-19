@@ -13,5 +13,7 @@ export default class AuthController {
     return await this.authService.login(payload)
   }
 
-  public async loggout() {}
+  public async loggout() {
+    return this.authService.loggout()
+  }
 }

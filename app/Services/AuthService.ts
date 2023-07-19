@@ -26,9 +26,15 @@ export default class AuthService {
     if (passwordIsInvalid) {
       throw new CustomException('Email/Password invalid', 401)
     }
-    const token = await ctx?.auth.use('api').generate(user, { expiresIn: '99999 dias' })
+    const token = await ctx?.auth.use('api').generate(user, { expiresIn: '1000 days' })
 
     const content = { user, token: token }
     return this.defaultResponse.isSuccessWithContent('User logged', 200, content)
+  }
+
+  public async loggout() {
+    const ctx = await HttpContext.get()
+    await ctx?.auth.use('api').revoke()
+    return this.defaultResponse.isSuccess('loggout is success', 200)
   }
 }

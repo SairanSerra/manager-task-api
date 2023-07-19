@@ -1,7 +1,14 @@
-import Hash from '@ioc:Adonis/Core/Hash'
 import { DateTime } from 'luxon'
-import { BaseModel, column, beforeFetch, beforeFind, beforeSave } from '@ioc:Adonis/Lucid/Orm'
+import {
+  BaseModel,
+  column,
+  beforeFetch,
+  beforeFind,
+  beforeDelete,
+  beforeSave,
+} from '@ioc:Adonis/Lucid/Orm'
 import { softDelete, softDeleteQuery } from 'App/Services/SoftDelete'
+import Hash from '@ioc:Adonis/Core/Hash'
 
 export default class User extends BaseModel {
   @column({ isPrimary: true })
@@ -42,7 +49,6 @@ export default class User extends BaseModel {
     columnName: 'deletedAt',
   })
   public deletedAt: DateTime | null
-
   @beforeSave()
   public static async encryptPassword(user: User) {
     if (user.$dirty.password) {
@@ -54,6 +60,9 @@ export default class User extends BaseModel {
 
   @beforeFetch()
   public static softDeletesFetch = softDeleteQuery
+
+  @beforeDelete()
+  public static softDelete = softDelete
 
   public async softDelete(column?: string) {
     await softDelete(this, column)
