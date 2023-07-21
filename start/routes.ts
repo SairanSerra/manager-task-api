@@ -36,6 +36,7 @@ Route.group(() => {
 
   Route.group(() => {
     Route.get('/task', 'TasksController.index')
+    Route.get('/task/specific', 'TasksController.specific')
     Route.post('/task', 'TasksController.store')
     Route.put('/task', 'TasksController.update')
     Route.delete('/task', 'TasksController.delete')

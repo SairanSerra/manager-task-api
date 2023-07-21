@@ -5,6 +5,7 @@ import type { UpdateTaskDto } from 'App/Dtos/Task/UpdateDto'
 import TaskService from 'App/Services/TaskService'
 import DeleteTaskValidator from 'App/Validators/DeleteTaskValidator'
 import IndexTaskValidator from 'App/Validators/IndexTaskValidator'
+import SpecificTaskValidator from 'App/Validators/SpecificTaskValidator'
 import StoreTaskValidator from 'App/Validators/StoreTaskValidator'
 import UpdateTaskValidator from 'App/Validators/UpdateTaskValidator'
 
@@ -32,5 +33,9 @@ export default class TasksController {
   public async delete({ request }: HttpContextContract) {
     const payload = await request.validate(DeleteTaskValidator)
     return await this.taskService.delete(payload)
+  }
+  public async specific({ request }: HttpContextContract) {
+    const payload = await request.validate(SpecificTaskValidator)
+    return await this.taskService.specific(payload)
   }
 }
