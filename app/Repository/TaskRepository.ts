@@ -22,6 +22,7 @@ export default class TaskRepository {
           query.where('status', status)
         }
       })
+      .orderBy('createdAt', 'asc')
       .paginate(page, 7)
   }
 
