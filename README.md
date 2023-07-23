@@ -16,4 +16,4 @@ caso não tenha docker instalado em sua maquina rode o comando
 node ace serve --watch
 ```
 
-- Atenção caso não rode o projeto pelo docker deverá se atnetar com as variavéis de ambiente para conectar no banco
+- Atenção caso não rode o projeto pelo docker deverá se atentar com as variavéis de ambiente para conectar no banco
