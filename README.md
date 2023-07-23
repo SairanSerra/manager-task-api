@@ -1,7 +1,7 @@
 # manager-task-api
  API gerenciamento de tarefas
 
-#Passo a passo para rodar o projeto
+# Passo a passo para rodar o projeto
 
 1 - Clone o projeto
 </br>
