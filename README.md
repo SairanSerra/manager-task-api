@@ -7,4 +7,11 @@
 </br>
 2 - Após clonado, abra o terminal na pasta raíz do projeto
 </br>
-3-  Com o terminal aberto rode o comando `docker-compose up`
+3-  Com o terminal aberto rode o comando 
+```bash
+docker-compose up
+```
+caso não tenha docker instalado em sua maquina rode o comando 
+```bash
+node ace serve --watch
+```
