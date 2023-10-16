@@ -30,7 +30,7 @@ FROM base AS production
 
 COPY --chown=node:node ./package*.json ./
 
-RUN npm ci --production
+RUN npm ci --production --ignore-ts-errors
 COPY --chown=node:node --from=build /app/manager-task-api/build .
 
 COPY --chown=node:node ./run-prod.sh  /tmp
