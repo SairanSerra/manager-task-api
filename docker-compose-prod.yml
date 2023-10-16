@@ -1,0 +1,28 @@
+version: "3.5"
+
+services:
+ manager-task-api:
+  container_name: manager-task-api
+  image: sairan/manager-task-api:latest
+  restart: always
+  ports:
+   - "4000:4000"
+  networks:
+   - mysql-network
+   - proxy-reverse-network
+   - manager-task-api-network
+  env_file:
+    - stack.env
+
+
+networks:
+  manager-task-api-network:
+   name: manager-task-api-network
+   driver: bridge
+  mysql-network:
+   name: mysql-network
+   external: true
+
+  proxy-reverse-network:
+   name: proxy-reverse-network
+   external: true
