@@ -32,7 +32,7 @@ Route.get('/', async (response) => {
 
 Route.group(() => {
   Route.post('/user/create', 'UsersController.create')
-  Route.post('/login', 'Authcontroller.login')
+  Route.post('/login', 'AuthController.login')
 
   Route.group(() => {
     Route.get('/task', 'TasksController.index')
