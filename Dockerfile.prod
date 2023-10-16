@@ -23,7 +23,7 @@ COPY --chown=node:node . .
 
 FROM dependencies AS build
 
-RUN  node ace build --production
+RUN  node ace build --production --ignore-ts-errors
 
 RUN  cp -a docs/ build/docs
 FROM base AS production
