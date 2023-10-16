@@ -6,7 +6,6 @@ FROM $NODE_IMAGE AS base
 RUN apk --no-cache add dumb-init
 
 RUN mkdir -p /app/manager-task-api && chown node:node /app/manager-task-api
-
 WORKDIR /app/manager-task-api
 
 USER node
@@ -23,18 +22,16 @@ COPY --chown=node:node . .
 
 FROM dependencies AS build
 
-RUN  node ace build --production --ignore-ts-errors
+RUN  node ace build --production
 
-RUN  cp -a docs/ build/docs
+# RUN  cp -a docs/ build/docs
 FROM base AS production
 
 COPY --chown=node:node ./package*.json ./
 
-RUN npm ci --production --ignore-ts-errors
+RUN npm ci --production
 COPY --chown=node:node --from=build /app/manager-task-api/build .
 
-COPY --chown=node:node ./run-prod.sh  /tmp
+# RUN node ace migration:run --force
 
-RUN chmod +x /tmp/run-prod.sh
-
-ENTRYPOINT ["sh", "/tmp/run-prod.sh"]
+CMD dumb-init node server.js
